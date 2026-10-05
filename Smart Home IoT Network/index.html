@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Home IoT Network</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2>🏠 SmartHome</h2>
+
+        <nav>
+
+            <button onclick="showSection('dashboard')">
+                📊 Dashboard
+            </button>
+
+            <button onclick="showSection('devices')">
+                🔌 IoT Devices
+            </button>
+
+            <button onclick="showSection('network')">
+                📡 IoT Network
+            </button>
+
+            <button onclick="showSection('energy')">
+                ⚡ Energy
+            </button>
+
+            <button onclick="showSection('settings')">
+                ⚙️ Settings
+            </button>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- Main -->
+
+    <main class="main">
+
+        <!-- Header -->
+
+        <header>
+
+            <div>
+                <h1>Smart Home IoT Network</h1>
+                <p>Monitor and control your smart home devices</p>
+            </div>
+
+            <div class="network-status">
+
+                <span></span>
+
+                IoT Network Online
+
+            </div>
+
+        </header>
+
+
+        <!-- Dashboard -->
+
+        <section id="dashboard" class="section">
+
+            <div class="welcome">
+
+                <h2>Good Evening 👋</h2>
+
+                <p>
+                    Welcome to your Smart Home Control Center
+                </p>
+
+            </div>
+
+
+            <!-- Environment -->
+
+            <div class="environment">
+
+                <div class="environment-card">
+
+                    <div class="environment-icon">
+                        🌡️
+                    </div>
+
+                    <div>
+                        <h3>Temperature</h3>
+                        <strong id="temperature">
+                            27°C
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="environment-card">
+
+                    <div class="environment-icon">
+                        💧
+                    </div>
+
+                    <div>
+                        <h3>Humidity</h3>
+                        <strong id="humidity">
+                            62%
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="environment-card">
+
+                    <div class="environment-icon">
+                        ⚡
+                    </div>
+
+                    <div>
+                        <h3>Energy Usage</h3>
+                        <strong id="energy">
+                            3.2 kW
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="environment-card">
+
+                    <div class="environment-icon">
+                        📱
+                    </div>
+
+                    <div>
+                        <h3>Devices Online</h3>
+                        <strong id="onlineDevices">
+                            5 / 6
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Device Controls -->
+
+            <h2 class="section-title">
+                Smart Device Controls
+            </h2>
+
+
+            <div class="device-grid">
+
+
+                <!-- Light -->
+
+                <div class="device-card">
+
+                    <div class="device-top">
+
+                        <div class="device-icon">
+                            💡
+                        </div>
+
+                        <span id="lightStatus" class="device-status off">
+                            OFF
+                        </span>
+
+                    </div>
+
+                    <h3>Living Room Light</h3>
+
+                    <p>Smart LED Light</p>
+
+                    <button id="lightButton" onclick="toggleDevice('light')">
+
+                        Turn ON
+
+                    </button>
+
+                </div>
+
+
+                <!-- Fan -->
+
+                <div class="device-card">
+
+                    <div class="device-top">
+
+                        <div class="device-icon">
+                            🌀
+                        </div>
+
+                        <span id="fanStatus" class="device-status off">
+                            OFF
+                        </span>
+
+                    </div>
+
+                    <h3>Ceiling Fan</h3>
+
+                    <p>Smart Fan</p>
+
+                    <button id="fanButton" onclick="toggleDevice('fan')">
+
+                        Turn ON
+
+                    </button>
+
+                </div>
+
+
+                <!-- AC -->
+
+                <div class="device-card">
+
+                    <div class="device-top">
+
+                        <div class="device-icon">
+                            ❄️
+                        </div>
+
+                        <span id="acStatus" class="device-status off">
+                            OFF
+                        </span>
+
+                    </div>
+
+                    <h3>Air Conditioner</h3>
+
+                    <p>Smart AC</p>
+
+                    <button id="acButton" onclick="toggleDevice('ac')">
+
+                        Turn ON
+
+                    </button>
+
+                </div>
+
+
+                <!-- Door -->
+
+                <div class="device-card">
+
+                    <div class="device-top">
+
+                        <div class="device-icon">
+                            🔒
+                        </div>
+
+                        <span id="doorStatus" class="device-status on">
+                            LOCKED
+                        </span>
+
+                    </div>
+
+                    <h3>Front Door</h3>
+
+                    <p>Smart Door Lock</p>
+
+                    <button id="doorButton" onclick="toggleDoor()">
+
+                        Unlock Door
+
+                    </button>
+
+                </div>
+
+
+                <!-- TV -->
+
+                <div class="device-card">
+
+                    <div class="device-top">
+
+                        <div class="device-icon">
+                            📺
+                        </div>
+
+                        <span id="tvStatus" class="device-status off">
+                            OFF
+                        </span>
+
+                    </div>
+
+                    <h3>Smart TV</h3>
+
+                    <p>Entertainment System</p>
+
+                    <button id="tvButton" onclick="toggleDevice('tv')">
+
+                        Turn ON
+
+                    </button>
+
+                </div>
+
+
+                <!-- Camera -->
+
+                <div class="device-card">
+
+                    <div class="device-top">
+
+                        <div class="device-icon">
+                            📷
+                        </div>
+
+                        <span id="cameraStatus" class="device-status on">
+                            ACTIVE
+                        </span>
+
+                    </div>
+
+                    <h3>Security Camera</h3>
+
+                    <p>Home Security</p>
+
+                    <button id="cameraButton" onclick="toggleDevice('camera')">
+
+                        Disable Camera
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Master Controls -->
+
+            <div class="master-control">
+
+                <h2>Quick Controls</h2>
+
+                <div>
+
+                    <button onclick="turnAllOn()">
+                        🟢 Turn All ON
+                    </button>
+
+                    <button class="danger" onclick="turnAllOff()">
+
+                        🔴 Turn All OFF
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Devices -->
+
+        <section id="devices" class="section hidden">
+
+            <h2>IoT Devices</h2>
+
+            <div class="device-table">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Device</th>
+                            <th>Type</th>
+                            <th>IP Address</th>
+                            <th>Protocol</th>
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>💡 Living Room Light</td>
+
+                            <td>Smart Light</td>
+
+                            <td>192.168.1.10</td>
+
+                            <td>MQTT</td>
+
+                            <td class="green">
+                                Online
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>🌀 Ceiling Fan</td>
+
+                            <td>Smart Fan</td>
+
+                            <td>192.168.1.11</td>
+
+                            <td>Wi-Fi</td>
+
+                            <td class="green">
+                                Online
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>❄️ Air Conditioner</td>
+
+                            <td>Smart AC</td>
+
+                            <td>192.168.1.12</td>
+
+                            <td>Wi-Fi</td>
+
+                            <td class="green">
+                                Online
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>📺 Smart TV</td>
+
+                            <td>Entertainment</td>
+
+                            <td>192.168.1.13</td>
+
+                            <td>Wi-Fi</td>
+
+                            <td class="green">
+                                Online
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>📷 Security Camera</td>
+
+                            <td>Security</td>
+
+                            <td>192.168.1.14</td>
+
+                            <td>Wi-Fi</td>
+
+                            <td class="green">
+                                Online
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>🔒 Smart Door Lock</td>
+
+                            <td>Security</td>
+
+                            <td>192.168.1.15</td>
+
+                            <td>Bluetooth</td>
+
+                            <td class="red">
+                                Offline
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Network -->
+
+        <section id="network" class="section hidden">
+
+            <h2>IoT Network</h2>
+
+            <div class="network-cards">
+
+                <div class="network-card">
+
+                    <h3>📡 Wi-Fi Signal</h3>
+
+                    <strong>92%</strong>
+
+                    <div class="progress">
+
+                        <div class="progress-bar" style="width:92%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="network-card">
+
+                    <h3>📦 Data Traffic</h3>
+
+                    <strong>45 MB/s</strong>
+
+                    <p>
+                        Current network traffic
+                    </p>
+
+                </div>
+
+
+                <div class="network-card">
+
+                    <h3>⏱️ Network Latency</h3>
+
+                    <strong>18 ms</strong>
+
+                    <p>
+                        Excellent response time
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="network-info-box">
+
+                <h2>IoT Communication</h2>
+
+                <p>
+                    Smart home devices communicate through
+                    the home network using technologies such as
+                    Wi-Fi, Bluetooth and MQTT.
+                </p>
+
+                <div class="flow">
+
+                    <span>📱 User</span>
+
+                    <b>→</b>
+
+                    <span>📡 Router</span>
+
+                    <b>→</b>
+
+                    <span>☁️ IoT Gateway</span>
+
+                    <b>→</b>
+
+                    <span>🏠 Smart Devices</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Energy -->
+
+        <section id="energy" class="section hidden">
+
+            <h2>Energy Monitoring</h2>
+
+            <div class="energy-box">
+
+                <div>
+
+                    <h3>Current Consumption</h3>
+
+                    <strong id="energyLarge">
+                        3.2 kW
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <h3>Today's Usage</h3>
+
+                    <strong>
+                        18.6 kWh
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <h3>Estimated Cost</h3>
+
+                    <strong>
+                        ₹148
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="energy-chart">
+
+                <h2>Energy Consumption</h2>
+
+                <div class="bars">
+
+                    <div style="height:40%">
+                        <span>6AM</span>
+                    </div>
+
+                    <div style="height:55%">
+                        <span>9AM</span>
+                    </div>
+
+                    <div style="height:70%">
+                        <span>12PM</span>
+                    </div>
+
+                    <div style="height:50%">
+                        <span>3PM</span>
+                    </div>
+
+                    <div style="height:80%">
+                        <span>6PM</span>
+                    </div>
+
+                    <div style="height:65%">
+                        <span>9PM</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Settings -->
+
+        <section id="settings" class="section hidden">
+
+            <h2>Smart Home Settings</h2>
+
+            <div class="settings-box">
+
+                <label>
+                    Home Name
+                </label>
+
+                <input type="text" value="My Smart Home">
+
+
+                <label>
+                    Wi-Fi Network
+                </label>
+
+                <input type="text" value="Home_WiFi">
+
+
+                <label>
+                    IoT Protocol
+                </label>
+
+                <select>
+
+                    <option>MQTT</option>
+                    <option>HTTP</option>
+                    <option>CoAP</option>
+
+                </select>
+
+
+                <button onclick="saveSettings()">
+                    Save Settings
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            Smart Home IoT Network |
+            Computer Networks Project
+
+        </footer>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
